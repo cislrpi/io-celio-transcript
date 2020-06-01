@@ -1,0 +1,44 @@
+{
+  "name": "@cisl/io-celio-transcript",
+  "version": "1.0.0-dev.1",
+  "description": "Plugin for @cisl/io for interop with transcript-worker using legacy celio topics/queues",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint src/*",
+    "prepublishOnly": "echo \"Do not run publish directly, run tsc-publish\" && exit 1",
+    "tsc-publish": "tsc-publish"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "contributors": [
+    {
+      "name": "Matthew Peveler",
+      "email": "pevelm@rpi.edu"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cislrpi/io-celio-transcript"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@cisl/io": ">= 1.0.0-dev.18"
+  },
+  "devDependencies": {
+    "@cisl/io": "^1.0.0-dev.18",
+    "@masterodin/eslint-config-typescript": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "tsc-publish": "^0.5.2",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {}
+}
