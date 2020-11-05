@@ -1,5 +1,6 @@
+import cislio from '@cisl/io';
 import { Io } from '@cisl/io/io';
-import Rabbit from '@cisl/io/rabbitmq';
+import { Rabbit } from '@cisl/io/rabbit';
 import { RabbitMessage } from '@cisl/io/types';
 import Redis from '@cisl/io/redis';
 
@@ -28,16 +29,12 @@ export class Transcript {
     this.redis = io.redis;
   }
 
-  private _on(topic: string, handler: CallbackHandler): void {
-    this.rabbit.onTopic(topic, handler);
-  }
-
   /**
    * Subscribe only to the final transcriptions.
    * @param  {transcriptSubscriptionCallback} handler - Function to respond the transcription results.
    */
   public onFinal(handler: CallbackHandler): void {
-    this._on('*.final.transcript', handler);
+    this.rabbit.onTopic('*.final.transcript', handler);
   }
 
   /**
@@ -45,7 +42,7 @@ export class Transcript {
    * @param  {transcriptSubscriptionCallback} handler - Function to respond the transcription results.
    */
   public onInterim(handler: CallbackHandler): void {
-    this._on('*.interim.transcript', handler);
+    this.rabbit.onTopic('*.interim.transcript', handler);
   }
 
   /**
@@ -53,7 +50,7 @@ export class Transcript {
    * @param  {transcriptSubscriptionCallback} handler - Function to respond the transcription results.
    */
   public onAll(handler: CallbackHandler): void {
-    this._on('*.*.transcript', handler);
+    this.rabbit.onTopic('*.*.transcript', handler);
   }
 
   /**
@@ -110,3 +107,5 @@ export class Transcript {
 export function registerTranscript(io: Io): void {
   io.transcript = new Transcript(io);
 }
+
+cislio.registerPlugins(registerTranscript);
