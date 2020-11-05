@@ -1,6 +1,6 @@
 Changelog
 =========
 
-## v1.0.0-dev1
+## v1.0.0
 
 * Initial Release
