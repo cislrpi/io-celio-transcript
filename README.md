@@ -1,5 +1,3 @@
-__NOTE__: This repo was moved into the monorepo in [@cisl/io](https://github.com/cislrpi/io).
-
 # @cisl/io-celio-transcript
 
 Plugin for @cisl/io for interfacing with the transcript-worker
